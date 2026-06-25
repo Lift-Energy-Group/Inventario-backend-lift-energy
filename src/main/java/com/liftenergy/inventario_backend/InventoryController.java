@@ -26,6 +26,7 @@ public class InventoryController {
     public Item update(@PathVariable Long id, @RequestBody Item itemDetails) {
         Item item = itemRepository.findById(id).orElseThrow();
         item.setName(itemDetails.getName());
+        item.setDescription(itemDetails.getDescription()); // <--- Actualización de la descripción
         item.setCategory(itemDetails.getCategory());
         item.setQuantity(itemDetails.getQuantity());
         return itemRepository.save(item);
